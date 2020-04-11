@@ -1,18 +1,16 @@
 package com.leyou.service;
 
 import com.leyou.web.UploadController;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
-
-import javax.imageio.ImageIO;
 
 /**
  * author:  niceyoo
@@ -52,7 +50,7 @@ public class UploadService {
             }
             // 2、保存图片
             // 2.1、生成保存目录
-            File dir = new File("D:\\heima\\upload");
+            File dir = new File("/Users/caozhipeng/image/");
             if (!dir.exists()) {
                 dir.mkdirs();
             }
@@ -60,7 +58,7 @@ public class UploadService {
             file.transferTo(new File(dir, file.getOriginalFilename()));
 
             // 2.3、拼接图片地址
-            String url = "http://image.leyou.com/upload/" + file.getOriginalFilename();
+            String url = "http://image.leyou.com/" + file.getOriginalFilename();
 
             return url;
 
