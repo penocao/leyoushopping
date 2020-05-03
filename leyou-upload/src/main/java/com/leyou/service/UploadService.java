@@ -50,7 +50,7 @@ public class UploadService {
             }
             // 2、保存图片
             // 2.1、生成保存目录
-            File dir = new File("/Users/caozhipeng/image/");
+            File dir = new File("D:\\heima\\image");
             if (!dir.exists()) {
                 dir.mkdirs();
             }
