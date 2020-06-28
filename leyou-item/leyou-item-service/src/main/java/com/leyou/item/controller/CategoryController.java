@@ -27,6 +27,7 @@ public class CategoryController {
 
     /**
      * 根据父节点的id查询子节点
+     *
      * @param pid
      * @return
      */
@@ -45,5 +46,17 @@ public class CategoryController {
         }
         //202:查询成功
         return ResponseEntity.ok(categories);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<String>> queryNamesByIds(@RequestParam("ids") List<Long> ids) {
+        List<String> names = this.categoryService.queryNamesByIds(ids);
+        if (CollectionUtils.isEmpty(names)) {
+            //404：资源服务器未找到
+            //return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.notFound().build();
+        }
+        //202:查询成功
+        return ResponseEntity.ok(names);
     }
 }
